@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'For Sellers - Market Your Assumable Mortgage',
   description:
-    'Sell your home faster and for more money by marketing your assumable mortgage. Attract more buyers with low-rate assumable FHA, VA, or USDA loans.',
-}
+    'Sell faster and for $10K-$20K more by marketing your assumable mortgage. Attract buyers with low-rate assumable FHA, VA, or USDA loans in Las Vegas.',
+  path: '/for-sellers',
+  keywords: ['market assumable mortgage', 'sell with assumable loan', 'assumable mortgage seller'],
+})
 
 export default function ForSellersPage() {
   return (
@@ -224,6 +228,19 @@ export default function ForSellersPage() {
       <ContactForm
         title="Have an Assumable Mortgage? Let's Market It!"
         description="Contact us to learn how to effectively market your assumable mortgage and attract more buyers"
+      />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'For Sellers - Market Your Assumable Mortgage',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/for-sellers',
+          breadcrumb: generateBreadcrumbSchema('/for-sellers', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'For Sellers', url: 'https://assumablehomefinder.com/for-sellers' },
+          ]),
+        })}
       />
     </div>
   )

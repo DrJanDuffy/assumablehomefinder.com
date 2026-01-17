@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Hero from './components/sections/Hero'
 import Stats from './components/sections/Stats'
 import HowItWorks from './components/sections/HowItWorks'
@@ -7,13 +8,25 @@ import ContactForm from './components/sections/ContactForm'
 import AgentBio from './components/sections/AgentBio'
 import Calculator from './components/calculator/Calculator'
 import ResultsDisplay from './components/calculator/ResultsDisplay'
+import SchemaMarkup from './components/seo/SchemaMarkup'
 import { calculateSavings } from '@/lib/calculator-utils'
+import { generatePageMetadata, generateWebPageSchema, generateOrganizationSchema } from '@/lib/seo-config'
+import { generateRealEstateAgentSchema } from '@/lib/schema-generators'
 
-export const metadata = {
-  title: 'Home',
+export const metadata: Metadata = generatePageMetadata({
+  title: 'Find Homes with 2-4% Assumable Mortgages',
   description:
-    'Find homes with assumable FHA, VA, and USDA mortgages. Save $500-$1,500/month by assuming existing low-rate mortgages (2-4%) instead of getting new loans at 6-7%+.',
-}
+    'Save $500-$1,500/month by assuming existing FHA, VA, or USDA mortgages at 2-4% interest instead of getting new loans at 6-7%+. Find assumable homes in Las Vegas and nationwide.',
+  path: '/',
+  keywords: ['assumable mortgage calculator', 'assumable homes Las Vegas', 'VA loan assumption'],
+})
+
+const homepageSchema = generateWebPageSchema({
+  name: 'Find Homes with 2-4% Assumable Mortgages',
+  description:
+    'Save $500-$1,500/month by assuming existing FHA, VA, or USDA mortgages at 2-4% interest instead of getting new loans at 6-7%+.',
+  url: 'https://assumablehomefinder.com/',
+})
 
 const exampleCalculatorInputs = {
   homePrice: 400000,
@@ -117,6 +130,11 @@ export default function HomePage() {
 
       {/* Agent Bio */}
       <AgentBio />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup schema={homepageSchema} />
+      <SchemaMarkup schema={generateOrganizationSchema()} />
+      <SchemaMarkup schema={generateRealEstateAgentSchema()} />
     </>
   )
 }

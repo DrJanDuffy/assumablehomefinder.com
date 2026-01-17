@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'How Assumable Mortgages Work',
   description:
-    'Learn the step-by-step process of assuming an existing mortgage. Understand requirements, fees, timeline, and how to save thousands on your home purchase.',
-}
+    'Learn the 6-step process of assuming an existing mortgage. Understand requirements, fees, timeline, and save thousands on your home purchase.',
+  path: '/how-it-works',
+  keywords: ['how to assume mortgage', 'assumable mortgage process', 'mortgage assumption steps'],
+})
 
 const steps = [
   {
@@ -229,6 +233,29 @@ export default function HowItWorksPage() {
 
       {/* Lead Capture */}
       <ContactForm />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateHowToSchema({
+          name: 'How to Assume an Existing Mortgage',
+          description: 'Learn the 6-step process of assuming an existing FHA, VA, or USDA mortgage and saving thousands on your home purchase.',
+          step: steps.map((step) => ({
+            name: step.title,
+            text: step.description + ' ' + step.details.join(' '),
+          })),
+        })}
+      />
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'How Assumable Mortgages Work',
+          description: 'Learn the 6-step process of assuming an existing mortgage. Understand requirements, fees, timeline, and how to save thousands on your home purchase.',
+          url: 'https://assumablehomefinder.com/how-it-works',
+          breadcrumb: generateBreadcrumbSchema('/how-it-works', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'How It Works', url: 'https://assumablehomefinder.com/how-it-works' },
+          ]),
+        })}
+      />
     </div>
   )
 }

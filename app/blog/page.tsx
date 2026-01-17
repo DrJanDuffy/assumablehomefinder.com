@@ -1,11 +1,15 @@
 import { BlogPosts } from 'app/components/posts'
 import type { Metadata } from 'next'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'Blog - Assumable Mortgage Resources',
   description:
     'Learn about assumable mortgages, FHA loans, VA loans, USDA loans, and how to save thousands by assuming existing low-rate mortgages. Expert insights and buyer guides.',
-}
+  path: '/blog',
+  keywords: ['assumable mortgage blog', 'VA loan articles', 'FHA loan guide'],
+})
 
 export default function Page() {
   return (
@@ -48,6 +52,19 @@ export default function Page() {
           <BlogPosts />
         </section>
       </div>
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'Blog - Assumable Mortgage Resources',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/blog',
+          breadcrumb: generateBreadcrumbSchema('/blog', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'Blog', url: 'https://assumablehomefinder.com/blog' },
+          ]),
+        })}
+      />
     </div>
   )
 }

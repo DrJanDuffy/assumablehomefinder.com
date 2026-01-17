@@ -3,12 +3,16 @@ import AdvancedSearch from '../components/realscout/AdvancedSearch'
 import SimpleSearch from '../components/realscout/SimpleSearch'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'Find Assumable Homes - Search FHA, VA, USDA Loans',
   description:
-    'Search for homes with assumable FHA, VA, and USDA mortgages. Use our search tools or partner platforms to find assumable mortgage opportunities.',
-}
+    'Search for homes with assumable FHA, VA, and USDA mortgages in Las Vegas and nationwide. Use RealScout widgets, partner platforms, or work with Dr. Jan Duffy.',
+  path: '/find-homes',
+  keywords: ['find assumable homes', 'assumable homes Las Vegas', 'search assumable mortgages'],
+})
 
 export default function FindHomesPage() {
   return (
@@ -203,6 +207,19 @@ export default function FindHomesPage() {
           />
         </div>
       </section>
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'Find Assumable Homes - Search FHA, VA, USDA Loans',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/find-homes',
+          breadcrumb: generateBreadcrumbSchema('/find-homes', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'Find Homes', url: 'https://assumablehomefinder.com/find-homes' },
+          ]),
+        })}
+      />
     </div>
   )
 }

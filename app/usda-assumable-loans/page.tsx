@@ -2,12 +2,16 @@ import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'USDA Assumable Loans - Complete Buyer\'s Guide',
   description:
-    'Learn about USDA assumable mortgages for rural properties. Requirements, income limits, and how to find USDA assumable homes.',
-}
+    'Learn about USDA assumable mortgages for rural properties. Requirements (640+ credit, 41% DTI), income limits, and how to find USDA assumable homes.',
+  path: '/usda-assumable-loans',
+  keywords: ['USDA assumable loan', 'USDA mortgage assumption', 'rural assumable mortgage'],
+})
 
 const faqItems = [
   {
@@ -136,6 +140,19 @@ export default function USDALoansPage() {
       <ContactForm
         title="Ready to Find USDA Assumable Homes?"
         description="Contact us to start your search for USDA assumable mortgage opportunities"
+      />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'USDA Assumable Loans - Complete Buyer\'s Guide',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/usda-assumable-loans',
+          breadcrumb: generateBreadcrumbSchema('/usda-assumable-loans', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'USDA Assumable Loans', url: 'https://assumablehomefinder.com/usda-assumable-loans' },
+          ]),
+        })}
       />
     </div>
   )

@@ -3,12 +3,16 @@ import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
 import ContactForm from '../components/sections/ContactForm'
 import Stats from '../components/sections/Stats'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'VA Assumable Loans - Complete Buyer\'s Guide',
   description:
-    'Can non-veterans assume VA loans? Yes! Learn everything about VA assumable mortgages, including requirements, fees, and entitlement considerations.',
-}
+    'Can non-veterans assume VA loans? Yes! Learn about VA assumable mortgages: requirements (620+ credit), 0.5% fee, entitlement considerations, and how to find VA assumable homes.',
+  path: '/va-assumable-loans',
+  keywords: ['VA assumable mortgage', 'assume VA loan', 'non-veteran VA loan'],
+})
 
 const faqItems = [
   {
@@ -226,6 +230,19 @@ export default function VALoansPage() {
       <ContactForm
         title="Ready to Find VA Assumable Homes?"
         description="Contact us to start your search for VA assumable mortgage opportunities"
+      />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'VA Assumable Loans - Complete Buyer\'s Guide',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/va-assumable-loans',
+          breadcrumb: generateBreadcrumbSchema('/va-assumable-loans', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'VA Assumable Loans', url: 'https://assumablehomefinder.com/va-assumable-loans' },
+          ]),
+        })}
       />
     </div>
   )

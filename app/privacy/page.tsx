@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'Privacy Policy',
-  description: 'Privacy policy for Assumable Home Finder website.',
-}
+  description: 'Privacy policy for Assumable Home Finder website. Learn how we collect, use, and protect your personal information.',
+  path: '/privacy',
+  keywords: ['privacy policy', 'data protection', 'assumable mortgage privacy'],
+})
 
 export default function PrivacyPage() {
   return (
@@ -65,6 +69,19 @@ export default function PrivacyPage() {
           </section>
         </div>
       </div>
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'Privacy Policy',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/privacy',
+          breadcrumb: generateBreadcrumbSchema('/privacy', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'Privacy Policy', url: 'https://assumablehomefinder.com/privacy' },
+          ]),
+        })}
+      />
     </div>
   )
 }

@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
 import { AGENT_INFO } from '@/lib/constants'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'Contact Us - Assumable Mortgage Inquiry',
   description:
-    'Contact Dr. Jan Duffy for assumable mortgage inquiries, home searches, and real estate services in Las Vegas and Henderson, Nevada.',
-}
+    'Contact Dr. Jan Duffy for assumable mortgage inquiries, home searches, and real estate services in Las Vegas and Henderson, Nevada. Call (702) 500-1971.',
+  path: '/contact',
+  keywords: ['contact assumable mortgage', 'Las Vegas real estate contact', 'Dr. Jan Duffy contact'],
+})
 
 export default function ContactPage() {
   return (
@@ -93,6 +97,19 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'Contact Us - Assumable Mortgage Inquiry',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/contact',
+          breadcrumb: generateBreadcrumbSchema('/contact', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'Contact', url: 'https://assumablehomefinder.com/contact' },
+          ]),
+        })}
+      />
     </div>
   )
 }

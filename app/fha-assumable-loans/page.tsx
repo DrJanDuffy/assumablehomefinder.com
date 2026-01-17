@@ -2,12 +2,16 @@ import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
 import ContactForm from '../components/sections/ContactForm'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'FHA Assumable Loans - Complete Buyer\'s Guide',
   description:
-    'Everything you need to know about FHA assumable mortgages. Requirements, fees, process, and how to find FHA assumable homes.',
-}
+    'Complete guide to FHA assumable mortgages: requirements (580+ credit, 3.5% down), $900 fee cap, process, and how to find FHA assumable homes.',
+  path: '/fha-assumable-loans',
+  keywords: ['FHA assumable loan', 'FHA mortgage assumption', 'assume FHA loan'],
+})
 
 const faqItems = [
   {
@@ -191,6 +195,19 @@ export default function FHALoansPage() {
       <ContactForm
         title="Ready to Find FHA Assumable Homes?"
         description="Contact us to start your search for FHA assumable mortgage opportunities"
+      />
+
+      {/* SEO Schema Markup */}
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'FHA Assumable Loans - Complete Buyer\'s Guide',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/fha-assumable-loans',
+          breadcrumb: generateBreadcrumbSchema('/fha-assumable-loans', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'FHA Assumable Loans', url: 'https://assumablehomefinder.com/fha-assumable-loans' },
+          ]),
+        })}
       />
     </div>
   )

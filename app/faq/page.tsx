@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import FAQ from '../components/sections/FAQ'
+import SchemaMarkup from '../components/seo/SchemaMarkup'
 import { generateFAQPageSchema } from '@/lib/schema-generators'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'FAQ - Assumable Mortgage Questions',
   description:
     'Frequently asked questions about assumable mortgages, FHA loans, VA loans, USDA loans, requirements, fees, and the assumption process.',
-}
+  path: '/faq',
+  keywords: ['assumable mortgage FAQ', 'assume mortgage questions', 'VA loan FAQ'],
+})
 
 const generalQuestions = [
   {
@@ -161,22 +165,18 @@ export default function FAQPage() {
         </div>
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: allQuestions.map((item) => ({
-              '@type': 'Question',
-              name: item.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: item.answer,
-              },
-            })),
-          }),
-        }}
+      {/* SEO Schema Markup */}
+      <SchemaMarkup schema={generateFAQPageSchema(allQuestions)} />
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'FAQ - Assumable Mortgage Questions',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/faq',
+          breadcrumb: generateBreadcrumbSchema('/faq', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'FAQ', url: 'https://assumablehomefinder.com/faq' },
+          ]),
+        })}
       />
     </div>
   )

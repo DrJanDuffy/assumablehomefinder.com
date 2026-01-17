@@ -3,12 +3,15 @@ import Calculator from '../components/calculator/Calculator'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import { generateCalculatorSchema } from '@/lib/schema-generators'
 import ContactForm from '../components/sections/ContactForm'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'Assumable Mortgage Savings Calculator',
   description:
-    'Calculate how much you can save by assuming an existing low-rate mortgage instead of getting a new loan. Compare payments and see your potential savings.',
-}
+    'Calculate savings by assuming existing 2-4% mortgages vs new 6-7% loans. See monthly, annual, and 30-year savings with our interactive calculator.',
+  path: '/calculator',
+  keywords: ['assumable mortgage calculator', 'mortgage savings calculator', 'assumable loan calculator'],
+})
 
 export default function CalculatorPage() {
   return (
@@ -35,7 +38,19 @@ export default function CalculatorPage() {
         </div>
       </div>
 
+      {/* SEO Schema Markup */}
       <SchemaMarkup schema={generateCalculatorSchema()} />
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'Assumable Mortgage Savings Calculator',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/calculator',
+          breadcrumb: generateBreadcrumbSchema('/calculator', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'Calculator', url: 'https://assumablehomefinder.com/calculator' },
+          ]),
+        })}
+      />
     </div>
   )
 }

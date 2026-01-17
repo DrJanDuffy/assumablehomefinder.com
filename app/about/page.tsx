@@ -4,12 +4,15 @@ import SchemaMarkup from '../components/seo/SchemaMarkup'
 import { generateRealEstateAgentSchema } from '@/lib/schema-generators'
 import Button from '../components/ui/Button'
 import Image from 'next/image'
+import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'About Dr. Jan Duffy - Assumable Mortgage Specialist',
   description:
-    'Dr. Jan Duffy is a Nevada-licensed REALTOR specializing in assumable mortgages, luxury homes, and Las Vegas real estate. Learn more about her expertise and services.',
-}
+    'Dr. Jan Duffy is a Nevada-licensed REALTOR specializing in assumable mortgages, luxury homes, and Las Vegas real estate. 30+ years market expertise, License S.0197614.LLC.',
+  path: '/about',
+  keywords: ['Dr. Jan Duffy', 'Las Vegas real estate agent', 'assumable mortgage specialist'],
+})
 
 export default function AboutPage() {
   return (
@@ -199,7 +202,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* SEO Schema Markup */}
       <SchemaMarkup schema={generateRealEstateAgentSchema()} />
+      <SchemaMarkup
+        schema={generateWebPageSchema({
+          name: 'About Dr. Jan Duffy - Assumable Mortgage Specialist',
+          description: metadata.description || '',
+          url: 'https://assumablehomefinder.com/about',
+          breadcrumb: generateBreadcrumbSchema('/about', [
+            { name: 'Home', url: 'https://assumablehomefinder.com/' },
+            { name: 'About', url: 'https://assumablehomefinder.com/about' },
+          ]),
+        })}
+      />
     </div>
   )
 }
