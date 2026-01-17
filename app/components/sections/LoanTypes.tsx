@@ -48,7 +48,7 @@ export default function LoanTypes() {
                   </span>
                 </div>
               </div>
-              {loan.specialNote && (
+              {'specialNote' in loan && loan.specialNote && (
                 <div className="mt-4 rounded-md bg-[var(--color-accent)]/10 p-3 text-xs font-medium text-[var(--color-accent-dark)]">
                   {loan.specialNote}
                 </div>
