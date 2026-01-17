@@ -98,24 +98,6 @@ export function generateFAQPageSchema(
   }
 }
 
-export function generateOrganizationSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': `${SITE_CONFIG.baseUrl}#organization`,
-    name: AGENT_INFO.brokerage,
-    url: SITE_CONFIG.baseUrl,
-    telephone: AGENT_INFO.phone,
-    email: AGENT_INFO.email,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Las Vegas',
-      addressRegion: 'NV',
-      addressCountry: 'US',
-    },
-  }
-}
-
 export function generateCalculatorSchema() {
   return {
     '@context': 'https://schema.org',

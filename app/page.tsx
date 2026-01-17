@@ -10,8 +10,8 @@ import Calculator from './components/calculator/Calculator'
 import ResultsDisplay from './components/calculator/ResultsDisplay'
 import SchemaMarkup from './components/seo/SchemaMarkup'
 import { calculateSavings } from '@/lib/calculator-utils'
-import { generatePageMetadata, generateWebPageSchema, generateOrganizationSchema } from '@/lib/seo-config'
-import { generateRealEstateAgentSchema } from '@/lib/schema-generators'
+import { generatePageMetadata, generateWebPageSchema } from '@/lib/seo-config'
+import { generateOrganizationSchema, generateRealEstateAgentSchema } from '@/lib/schema-generators'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Find Homes with 2-4% Assumable Mortgages',
