@@ -1,11 +1,45 @@
 @import 'tailwindcss';
 
-::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
-}
-
+/* Design System Colors */
 :root {
+  /* Primary Colors */
+  --color-primary: #1e3a5f;
+  --color-primary-light: #2a5180;
+  --color-primary-dark: #152a44;
+  
+  /* Secondary Colors */
+  --color-secondary: #d4a84b;
+  --color-secondary-light: #e4b85b;
+  --color-secondary-dark: #b8983b;
+  
+  /* Accent Colors */
+  --color-accent: #22c55e;
+  --color-accent-light: #4ade80;
+  --color-accent-dark: #16a34a;
+  
+  /* Neutral Colors */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  
+  /* RealScout Widget Colors */
+  --rs-as-button-text-color: #ffffff;
+  --rs-as-background-color: #ffffff;
+  --rs-as-button-color: #4a90e2;
+  --rs-as-widget-width: 500px;
+  --rs-ss-font-primary-color: #000000;
+  --rs-ss-searchbar-border-color: #8b572a;
+  --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
+  --rs-ss-widget-width: 500px;
+  
+  /* Syntax Highlighting (for blog) */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -15,6 +49,11 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
