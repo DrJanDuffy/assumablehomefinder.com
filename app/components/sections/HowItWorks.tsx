@@ -11,19 +11,19 @@ const steps: Step[] = [
     number: 1,
     title: 'Find a Home with an Assumable Loan',
     description:
-      'Search for homes with FHA, VA, or USDA mortgages. These loans are assumable, meaning you can take over the seller's existing loan terms.',
+      'Search for homes with FHA, VA, or USDA mortgages. These loans are assumable, meaning you can take over the seller\'s existing loan terms.',
   },
   {
     number: 2,
     title: 'Qualify with the Existing Lender',
     description:
-      'Meet the lender's requirements: credit score 580-620+, DTI under 50%, and provide standard documentation. The process is simpler than a new loan.',
+      'Meet the lender\'s requirements: credit score 580-620+, DTI under 50%, and provide standard documentation. The process is simpler than a new loan.',
   },
   {
     number: 3,
     title: 'Assume the Low Rate & Save Thousands',
     description:
-      'Take over the seller's 2-4% interest rate instead of getting a new loan at 6-7%+. Save $500-$1,500/month on your mortgage payment.',
+      'Take over the seller\'s 2-4% interest rate instead of getting a new loan at 6-7%+. Save $500-$1,500/month on your mortgage payment.',
   },
 ]
 
