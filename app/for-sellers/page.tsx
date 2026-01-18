@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
@@ -232,7 +232,7 @@ export default function ForSellersPage() {
       </section>
 
       {/* Lead Capture */}
-      <ContactForm
+      <Calendly
         title="Have an Assumable Mortgage? Let's Market It!"
         description="Contact us to learn how to effectively market your assumable mortgage and attract more buyers"
       />

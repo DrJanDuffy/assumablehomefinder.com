@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import AdvancedSearch from '../components/realscout/AdvancedSearch'
 import SimpleSearch from '../components/realscout/SimpleSearch'
 import Card from '../components/ui/Card'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
@@ -208,9 +208,9 @@ export default function FindHomesPage() {
             </p>
           </div>
 
-          <ContactForm
+          <Calendly
             title="Get Help Finding Assumable Homes"
-            description="Fill out the form below and we'll help you find assumable mortgage opportunities in your area"
+            description="Schedule a consultation to discuss assumable mortgage opportunities in your area"
           />
         </div>
       </section>

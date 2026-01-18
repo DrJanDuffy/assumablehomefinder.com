@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
@@ -371,7 +371,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Lead Capture */}
-      <ContactForm />
+      <Calendly />
 
       {/* SEO Schema Markup */}
       <SchemaMarkup

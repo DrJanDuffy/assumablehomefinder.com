@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { AGENT_INFO } from '@/lib/constants'
@@ -51,11 +51,11 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {/* Contact Form */}
+          {/* Calendly Scheduler */}
           <div>
-            <ContactForm
-              title="Send Us a Message"
-              description="Fill out the form below and we'll get back to you soon"
+            <Calendly
+              title="Schedule a Consultation"
+              description="Book a time to discuss assumable mortgage opportunities with Dr. Jan Duffy"
             />
           </div>
 

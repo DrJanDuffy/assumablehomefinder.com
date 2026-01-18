@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
@@ -272,7 +272,7 @@ export default function USDALoansPage() {
       />
 
       {/* Lead Capture */}
-      <ContactForm
+      <Calendly
         title="Ready to Find USDA Assumable Homes?"
         description="Contact us to start your search for USDA assumable mortgage opportunities"
       />

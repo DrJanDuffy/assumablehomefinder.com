@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Calculator from '../components/calculator/Calculator'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import { generateCalculatorSchema } from '@/lib/schema-generators'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
@@ -215,10 +215,9 @@ export default function CalculatorPage() {
         </section>
 
         <div className="mt-16">
-          <ContactForm
+          <Calendly
             title="Want help finding homes with rates like this?"
-            description="Contact us to get started on your assumable mortgage search."
-            loanTypeField={false}
+            description="Schedule a consultation to get started on your assumable mortgage search."
           />
         </div>
       </div>

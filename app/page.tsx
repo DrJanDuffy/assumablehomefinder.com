@@ -4,7 +4,7 @@ import Stats from './components/sections/Stats'
 import HowItWorks from './components/sections/HowItWorks'
 import LoanTypes from './components/sections/LoanTypes'
 import FAQ from './components/sections/FAQ'
-import ContactForm from './components/sections/ContactForm'
+import Calendly from './components/sections/Calendly'
 import AgentBio from './components/sections/AgentBio'
 import Calculator from './components/calculator/Calculator'
 import ResultsDisplay from './components/calculator/ResultsDisplay'
@@ -221,7 +221,7 @@ export default function HomePage() {
       </section>
 
       {/* Lead Capture */}
-      <ContactForm />
+      <Calendly />
 
       {/* Agent Bio */}
       <AgentBio />

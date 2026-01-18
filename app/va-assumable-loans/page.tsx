@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import Stats from '../components/sections/Stats'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
@@ -234,7 +234,7 @@ export default function VALoansPage() {
       />
 
       {/* Lead Capture */}
-      <ContactForm
+      <Calendly
         title="Ready to Find VA Assumable Homes?"
         description="Contact us to start your search for VA assumable mortgage opportunities"
       />

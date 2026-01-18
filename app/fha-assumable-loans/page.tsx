@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import FAQ from '../components/sections/FAQ'
-import ContactForm from '../components/sections/ContactForm'
+import Calendly from '../components/sections/Calendly'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
 import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
@@ -262,7 +262,7 @@ export default function FHALoansPage() {
       />
 
       {/* Lead Capture */}
-      <ContactForm
+      <Calendly
         title="Ready to Find FHA Assumable Homes?"
         description="Contact us to start your search for FHA assumable mortgage opportunities"
       />
