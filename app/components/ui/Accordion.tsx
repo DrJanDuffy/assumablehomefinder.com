@@ -19,13 +19,13 @@ export function AccordionItem({
     <div className="border-b border-neutral-200">
       <button
         type="button"
-        className="flex w-full items-center justify-between py-4 text-left focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+        className="flex w-full items-center justify-between py-4 text-left focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 min-h-[56px] touch-manipulation active:bg-neutral-50 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <span className="font-semibold text-neutral-900 pr-4">{question}</span>
+        <span className="font-semibold text-base sm:text-lg text-neutral-900 pr-4">{question}</span>
         <svg
-          className={`h-5 w-5 flex-shrink-0 text-neutral-500 transition-transform ${
+          className={`h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 text-neutral-500 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -40,11 +40,15 @@ export function AccordionItem({
           />
         </svg>
       </button>
-      {isOpen && (
-        <div className="pb-4 text-neutral-600">
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="pb-4 text-sm sm:text-base text-neutral-600">
           {typeof answer === 'string' ? <p>{answer}</p> : answer}
         </div>
-      )}
+      </div>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import SimpleSearch from '../components/realscout/SimpleSearch'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -20,15 +21,21 @@ export default function FindHomesPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Find Assumable Homes
           </h1>
-          <p className="mt-6 text-xl text-white/90">
+          <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-white/90">
             Search for homes with assumable FHA, VA, and USDA mortgages in Las Vegas
             and throughout Nevada
           </p>
         </div>
       </section>
+
+      {/* Primary Lead Magnet - Office Listings */}
+      <OfficeListings 
+        title="Luxury Homes with Assumable Mortgages"
+        description="Browse our exclusive collection of luxury homes in Las Vegas and Henderson ($500K - $16M)"
+      />
 
       {/* RealScout Search Widgets */}
       <section className="px-4 py-16 sm:px-6 lg:px-8 bg-neutral-50">

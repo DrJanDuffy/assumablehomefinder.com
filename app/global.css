@@ -38,6 +38,7 @@
   --rs-ss-searchbar-border-color: #8b572a;
   --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
   --rs-ss-widget-width: 500px;
+  --rs-listing-divider-color: #0e64c8;
   
   /* Syntax Highlighting (for blog) */
   --sh-class: #2d5e9d;
@@ -71,6 +72,14 @@
 html {
   min-width: 360px;
 }
+
+body {
+  color: var(--color-neutral-900);
+  background-color: #ffffff;
+}
+
+/* Ensure text inherits dark color on white backgrounds unless explicitly set */
+/* Note: Elements with colored backgrounds (like Hero) should explicitly set text-white */
 
 .prose .anchor {
   @apply absolute invisible no-underline;
@@ -171,10 +180,33 @@ pre {
 
 /* Remove Safari input shadow on mobile */
 input[type='text'],
-input[type='email'] {
+input[type='email'],
+input[type='tel'],
+textarea,
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* Ensure minimum touch target size */
+button,
+a,
+[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media (max-width: 640px) {
+  /* Increase base font size on mobile for readability */
+  html {
+    font-size: 16px;
+  }
 }
 
 table {
@@ -186,4 +218,52 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+/* Screen reader only - for skip links */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* RealScout Widget Styles - Moved from inline */
+realscout-advanced-search {
+  --rs-as-button-text-color: #ffffff;
+  --rs-as-background-color: #ffffff;
+  --rs-as-button-color: #4a90e2;
+  --rs-as-widget-width: 100% !important;
+}
+
+realscout-simple-search {
+  --rs-ss-font-primary-color: #000000;
+  --rs-ss-searchbar-border-color: #8b572a;
+  --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
+  --rs-ss-widget-width: 100% !important;
+}
+
+@media (min-width: 640px) {
+  realscout-advanced-search {
+    --rs-as-widget-width: 500px !important;
+  }
+  realscout-simple-search {
+    --rs-ss-widget-width: 500px !important;
+  }
 }

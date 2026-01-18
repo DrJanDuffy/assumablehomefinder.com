@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -47,7 +47,7 @@ export default function Calculator() {
   // Watch all form values for real-time calculation
   const formValues = watch()
 
-  const onSubmit = (data: CalculatorFormData) => {
+  const onSubmit = useCallback((data: CalculatorFormData) => {
     const inputs: CalculatorInputs = {
       homePrice: data.homePrice,
       assumableLoanBalance: data.assumableLoanBalance,
@@ -60,24 +60,28 @@ export default function Calculator() {
 
     const calculated = calculateSavings(inputs)
     setResults(calculated)
-  }
+  }, [])
 
-  // Calculate on form change
-  const handleFormChange = () => {
-    const values = watch()
+  // Debounced calculation on form change
+  useEffect(() => {
+    const values = formValues
     if (
-      values.homePrice &&
-      values.assumableLoanBalance &&
-      values.assumableInterestRate &&
-      values.remainingLoanTerm &&
-      values.currentMarketRate !== undefined
+      !values.homePrice ||
+      !values.assumableLoanBalance ||
+      !values.assumableInterestRate ||
+      !values.remainingLoanTerm ||
+      values.currentMarketRate === undefined
     ) {
+      return
+    }
+
+    const timeoutId = setTimeout(() => {
       const inputs: CalculatorInputs = {
-        homePrice: values.homePrice,
-        assumableLoanBalance: values.assumableLoanBalance,
-        assumableInterestRate: values.assumableInterestRate,
-        remainingLoanTerm: values.remainingLoanTerm,
-        currentMarketRate: values.currentMarketRate,
+        homePrice: values.homePrice || 0,
+        assumableLoanBalance: values.assumableLoanBalance || 0,
+        assumableInterestRate: values.assumableInterestRate || 0,
+        remainingLoanTerm: values.remainingLoanTerm || 0,
+        currentMarketRate: values.currentMarketRate || 0,
         downPayment: values.downPayment || 0,
         secondMortgageRate: values.secondMortgageRate,
       }
@@ -88,15 +92,16 @@ export default function Calculator() {
       } catch (error) {
         // Ignore calculation errors during typing
       }
-    }
-  }
+    }, 300) // 300ms debounce
+
+    return () => clearTimeout(timeoutId)
+  }, [formValues])
 
   return (
     <div className="space-y-8">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        onChange={handleFormChange}
-        className="space-y-6 rounded-lg border border-neutral-200 bg-white p-6 shadow-sm sm:p-8"
+        className="space-y-6 rounded-lg border border-neutral-200 bg-white p-4 sm:p-6 lg:p-8 shadow-sm"
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Input
@@ -170,7 +175,9 @@ export default function Calculator() {
           helperText="If you need a second mortgage to cover the equity gap"
         />
 
-        <Button type="submit">Calculate Savings</Button>
+        <Button type="submit" fullWidthMobile={true} className="sm:w-auto">
+          Calculate Savings
+        </Button>
       </form>
 
       {results && <ResultsDisplay results={results} inputs={formValues} />}

@@ -4,6 +4,7 @@ import FAQ from '../components/sections/FAQ'
 import ContactForm from '../components/sections/ContactForm'
 import Stats from '../components/sections/Stats'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -65,6 +66,12 @@ export default function VALoansPage() {
 
       {/* Stats Section */}
       <Stats />
+
+      {/* Primary Lead Magnet - Office Listings */}
+      <OfficeListings 
+        title="Find VA Assumable Homes"
+        description="Browse luxury homes with assumable VA mortgages in Las Vegas and Henderson"
+      />
 
       {/* Main Content */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">

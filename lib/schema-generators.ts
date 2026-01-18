@@ -59,7 +59,8 @@ export function generateRealEstateAgentSchema() {
     '@type': 'RealEstateAgent',
     '@id': `${SITE_CONFIG.baseUrl}#agent`,
     name: AGENT_INFO.name,
-    jobTitle: AGENT_INFO.title,
+    jobTitle: `${AGENT_INFO.title} - Assumable Mortgage Specialist`,
+    description: `${AGENT_INFO.name} is a Nevada-licensed REALTOR® with 30+ years of experience specializing in assumable mortgages. Recognized expert on FHA, VA, and USDA loan assumptions in Las Vegas, Henderson, and throughout Nevada.`,
     telephone: AGENT_INFO.phone,
     email: AGENT_INFO.email,
     url: SITE_CONFIG.baseUrl,
@@ -78,6 +79,28 @@ export function generateRealEstateAgentSchema() {
       name: 'Real Estate License',
       value: AGENT_INFO.license,
     },
+    knowsAbout: [
+      'FHA Assumable Loan Process',
+      'VA Loan Assumptions',
+      'USDA Rural Development Loan Assumptions',
+      'Equity Gap Calculations',
+      'Las Vegas Real Estate Market',
+    ],
+    award: [
+      '30+ years of real estate experience',
+      'Assumable Mortgage Specialist',
+      'Las Vegas Market Expert',
+    ],
+    memberOf: [
+      {
+        '@type': 'Organization',
+        name: 'National Association of REALTORS®',
+      },
+      {
+        '@type': 'Organization',
+        name: 'Nevada REALTORS®',
+      },
+    ],
   }
 }
 

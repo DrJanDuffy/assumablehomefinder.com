@@ -35,7 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             error
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
               : 'border-neutral-300 focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)]'
-          } bg-white px-3 py-2 text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-offset-2 ${className}`}
+          } bg-white px-3 py-2.5 sm:py-2 text-base sm:text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-offset-2 min-h-[48px] ${className}`}
           {...props}
         />
         {error && (
@@ -72,7 +72,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             error
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
               : 'border-neutral-300 focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)]'
-          } bg-white px-3 py-2 text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-offset-2 ${className}`}
+          } bg-white px-3 py-2.5 sm:py-2 text-base sm:text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-offset-2 min-h-[48px] ${className}`}
           {...props}
         />
         {error && (

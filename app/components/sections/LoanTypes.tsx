@@ -15,12 +15,12 @@ export default function LoanTypes() {
             Three loan types allow you to assume existing mortgages
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
           {loanTypes.map((loan) => (
             <Card
               key={loan.slug}
               href={`/${loan.slug}`}
-              className="flex flex-col transition-transform hover:scale-105"
+              className="flex flex-col transition-all duration-200 min-h-[280px] active:bg-neutral-50 [@media(hover:hover)]:hover:scale-[1.02] [@media(hover:hover)]:hover:shadow-md"
             >
               <h3 className="text-xl font-semibold text-[var(--color-primary)]">
                 {loan.name}

@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-neutral-200 bg-neutral-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4">
           {/* About Section */}
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-lg font-semibold text-[var(--color-primary)]">
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <a
                   href={AGENT_INFO.phoneLink}
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] min-h-[48px] inline-flex items-center touch-manipulation"
                 >
                   {AGENT_INFO.phone}
                 </a>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${AGENT_INFO.email}`}
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] min-h-[48px] inline-flex items-center touch-manipulation break-all"
                 >
                   {AGENT_INFO.email}
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-[var(--color-primary)]"
+                  className="hover:text-[var(--color-primary)] min-h-[48px] inline-flex items-center touch-manipulation"
                 >
                   Contact Form
                 </Link>

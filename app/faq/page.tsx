@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import FAQ from '../components/sections/FAQ'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generateFAQPageSchema } from '@/lib/schema-generators'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
@@ -132,6 +133,14 @@ export default function FAQPage() {
           <p className="mt-6 text-xl text-neutral-600">
             Everything you need to know about assumable mortgages
           </p>
+        </div>
+
+        {/* Primary Lead Magnet - Office Listings */}
+        <div className="mb-12">
+          <OfficeListings 
+            title="Browse Luxury Homes with Assumable Mortgages"
+            description="Explore our exclusive collection of luxury homes in Las Vegas and Henderson"
+          />
         </div>
 
         <div className="space-y-12">

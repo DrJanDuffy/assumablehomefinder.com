@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo, memo, useCallback } from 'react'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { MARKET_STATS } from '@/lib/constants'
@@ -56,50 +56,60 @@ function AnimatedCounter({
     animate()
   }, [isInView, target, duration])
 
-  const formatNumber = (num: number) => {
-    if (decimals === 0) {
-      return Math.floor(num).toLocaleString()
-    }
-    return num.toFixed(decimals).toLocaleString()
-  }
+  const formatNumber = useCallback(
+    (num: number) => {
+      if (decimals === 0) {
+        return Math.floor(num).toLocaleString()
+      }
+      return num.toFixed(decimals).toLocaleString()
+    },
+    [decimals]
+  )
+
+  const formatted = useMemo(() => formatNumber(count), [count, formatNumber])
 
   return (
     <span ref={ref}>
       {prefix}
-      {formatNumber(count)}
+      {formatted}
       {suffix}
     </span>
   )
 }
 
-function Stat({ value, label, suffix = '', prefix = '' }: StatProps) {
+const Stat = memo(function Stat({ value, label, suffix = '', prefix = '' }: StatProps) {
   // Try to parse number from value for animation
-  const numMatch = value.match(/[\d.]+/)
+  const numMatch = useMemo(() => value.match(/[\d.]+/), [value])
   const hasNumber = numMatch !== null
+
+  const suffixText = useMemo(
+    () => (hasNumber && numMatch ? value.replace(numMatch[0], '').replace(suffix, '') + suffix : ''),
+    [value, numMatch, suffix, hasNumber]
+  )
 
   return (
     <div className="text-center">
-      <div className="text-4xl font-bold text-[var(--color-primary)] sm:text-5xl">
+      <div className="text-3xl font-bold text-[var(--color-primary)] sm:text-4xl lg:text-5xl">
         {hasNumber && numMatch ? (
           <AnimatedCounter
             target={parseFloat(numMatch[0])}
-            suffix={value.replace(numMatch[0], '').replace(suffix, '') + suffix}
+            suffix={suffixText}
             prefix={prefix}
           />
         ) : (
           `${prefix}${value}${suffix}`
         )}
       </div>
-      <p className="mt-2 text-sm font-medium text-neutral-600">{label}</p>
+      <p className="mt-2 text-xs sm:text-sm font-medium text-neutral-600">{label}</p>
     </div>
   )
-}
+})
 
 export default function Stats() {
   return (
     <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
           <Stat
             value={MARKET_STATS.assumableMortgagesText}
             label="Assumable Mortgages Nationwide"

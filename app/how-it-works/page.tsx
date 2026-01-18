@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -113,6 +114,12 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Primary Lead Magnet - Office Listings */}
+      <OfficeListings 
+        title="Browse Luxury Homes with Assumable Mortgages"
+        description="Explore our collection of luxury homes in Las Vegas and Henderson with assumable mortgage opportunities"
+      />
+
       {/* Steps */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
@@ -148,11 +155,59 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Key Benefits Section */}
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 text-center mb-12">
+            Key Benefits of Assuming an Existing Mortgage
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="text-neutral-600 mb-6">
+              Assuming an existing mortgage offers numerous advantages over getting a new loan, especially in today's high-interest-rate environment. Here are the primary benefits that make assumable mortgages an attractive option for homebuyers:
+            </p>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 mt-8">
+              <div className="bg-[var(--color-accent)]/10 border-2 border-[var(--color-accent)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--color-accent-dark)] mb-3">
+                  Massive Monthly Savings
+                </h3>
+                <p className="text-sm text-neutral-600">
+                  The primary benefit is immediate monthly savings. Assuming a 2-4% mortgage instead of getting a new loan at 6-7%+ can save you $500-$1,500 per month. This is real, recurring savings that adds up significantly over time.
+                </p>
+              </div>
+              <div className="bg-[var(--color-accent)]/10 border-2 border-[var(--color-accent)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--color-accent-dark)] mb-3">
+                  Lower Interest Rates Locked In
+                </h3>
+                <p className="text-sm text-neutral-600">
+                  When you assume a mortgage, you lock in the seller's original interest rate. With rates currently at 6-7%+ for new mortgages, assuming a 2.5% or 3% loan provides immediate value that compounds over years.
+                </p>
+              </div>
+              <div className="bg-[var(--color-accent)]/10 border-2 border-[var(--color-accent)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--color-accent-dark)] mb-3">
+                  Reduced Closing Costs
+                </h3>
+                <p className="text-sm text-neutral-600">
+                  Closing costs for assumptions are typically lower than new mortgages. You won't pay origination fees, points, or other lender fees. Assumption fees (FHA: $900 cap, VA: 0.5%) are much lower than new mortgage closing costs.
+                </p>
+              </div>
+              <div className="bg-[var(--color-accent)]/10 border-2 border-[var(--color-accent)] rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-[var(--color-accent-dark)] mb-3">
+                  Usually No Appraisal Required
+                </h3>
+                <p className="text-sm text-neutral-600">
+                  Most assumable mortgages don't require an appraisal, saving time and money. This speeds up the process and reduces costs. Appraisals are only required in certain circumstances, such as significant home appreciation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Comparison Table */}
       <section className="bg-neutral-50 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900 text-center mb-12">
-            Assumable Mortgage vs. New Mortgage
+            Side-by-Side: Assumable Mortgage vs. New Mortgage
           </h2>
           <div className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
             <table className="min-w-full divide-y divide-neutral-200">
@@ -227,6 +282,90 @@ export default function HowItWorksPage() {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Important Considerations Section */}
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 text-center mb-12">
+            Important Considerations When Assuming a Mortgage
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="text-neutral-600 mb-6">
+              While assumable mortgages offer significant benefits, it's important to understand the considerations and potential challenges:
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Equity Gap Considerations
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              If a home has appreciated significantly since the original mortgage was taken out, there will be an equity gap between the home's current price and the assumable loan balance. This gap must be covered with cash or a second mortgage. For example, if a home is worth $500,000 but the assumable loan balance is only $300,000, you'll need $200,000 (plus closing costs) to cover the equity gap.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Longer Processing Timeline
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              Assumptions typically take 45-90 days compared to 30-45 days for traditional mortgages. This is because the existing lender needs to verify your qualifications, and the process may involve additional approvals (especially for VA and USDA loans). Plan accordingly and set realistic expectations for your timeline.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Qualification Requirements
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              You must still qualify with the existing lender, meeting their credit score, income, and DTI requirements. While these are often similar to or slightly less strict than new mortgage requirements, you still need to provide documentation and meet their standards. Work with an experienced agent to ensure you're well-prepared for the qualification process.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Loan Type Limitations
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              Only FHA, VA, and USDA loans are assumable. Conventional loans are typically not assumable. This means your options are limited to homes with these specific loan types. However, there are over 12 million assumable mortgages nationwide, so there are plenty of opportunities available.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Getting Started Section */}
+      <section className="bg-neutral-50 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 text-center mb-12">
+            Getting Started with Assumable Mortgages in Las Vegas
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="text-neutral-600 mb-6">
+              Ready to explore assumable mortgage opportunities? Here's how to get started:
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Step 1: Understand Your Financial Situation
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              Review your credit score, calculate your debt-to-income ratio, and determine how much cash you have available for a down payment or equity gap. Most assumable mortgages require credit scores of 580-640+ and DTI ratios under 41-50%, depending on the loan type.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Step 2: Work with a Specialized Agent
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              Partner with an agent who understands assumable mortgages. They can help you identify opportunities, navigate the process, and avoid common pitfalls. Dr. Jan Duffy specializes in assumable mortgages and has the expertise to guide you successfully.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Step 3: Start Your Search
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              Use MLS searches, partner platforms, or work directly with your agent to find homes with assumable FHA, VA, or USDA mortgages. Be proactive in asking listing agents about assumable loans, as this information isn't always prominently featured.
+            </p>
+
+            <h3 className="text-xl font-semibold text-neutral-900 mt-6 mb-3">
+              Step 4: Evaluate Opportunities
+            </h3>
+            <p className="text-neutral-600 mb-4">
+              When you find a home with an assumable mortgage, calculate the equity gap, estimate your monthly payment savings, and determine if the opportunity makes financial sense. Our calculator on the calculator page can help with these calculations.
+            </p>
           </div>
         </div>
       </section>

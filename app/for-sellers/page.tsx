@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Card from '../components/ui/Card'
 import ContactForm from '../components/sections/ContactForm'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -27,6 +28,12 @@ export default function ForSellersPage() {
           </p>
         </div>
       </section>
+
+      {/* Primary Lead Magnet - Office Listings */}
+      <OfficeListings 
+        title="See How We Market Luxury Homes"
+        description="Browse our current listings to see how we highlight assumable mortgage opportunities"
+      />
 
       {/* Main Content */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">

@@ -1,6 +1,7 @@
 import { BlogPosts } from 'app/components/posts'
 import type { Metadata } from 'next'
 import SchemaMarkup from '../components/seo/SchemaMarkup'
+import OfficeListings from '../components/realscout/OfficeListings'
 import { generatePageMetadata, generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/seo-config'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -16,12 +17,20 @@ export default function Page() {
     <div className="bg-white min-h-screen py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl">
             Assumable Mortgage Blog
           </h1>
-          <p className="mt-6 text-xl text-neutral-600">
+          <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-neutral-600">
             Expert insights on assumable mortgages, FHA, VA, and USDA loans
           </p>
+        </div>
+
+        {/* Primary Lead Magnet - Office Listings */}
+        <div className="mb-12">
+          <OfficeListings 
+            title="Browse Luxury Homes with Assumable Mortgages"
+            description="Explore our exclusive collection of luxury homes in Las Vegas and Henderson"
+          />
         </div>
 
         <div className="mb-8">

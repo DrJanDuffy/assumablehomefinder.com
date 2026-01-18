@@ -85,7 +85,7 @@ export default function ContactForm({
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6 rounded-lg border border-neutral-200 bg-white p-6 shadow-sm sm:p-8"
+          className="space-y-6 rounded-lg border border-neutral-200 bg-white p-4 sm:p-6 lg:p-8 shadow-sm"
         >
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <Input
@@ -136,7 +136,7 @@ export default function ContactForm({
               <select
                 id="loanTypeInterest"
                 {...register('loanTypeInterest')}
-                className="block w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+                className="block w-full rounded-md border border-neutral-300 bg-white px-3 py-2.5 sm:py-2 text-base sm:text-sm focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 min-h-[48px]"
               >
                 <option value="">Any</option>
                 <option value="FHA">FHA</option>
@@ -172,7 +172,8 @@ export default function ContactForm({
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto"
+            fullWidthMobile={true}
+            className="sm:w-auto"
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </Button>

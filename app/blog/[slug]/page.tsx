@@ -3,6 +3,8 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import { AGENT_INFO } from '@/lib/constants'
+import { generateArticleAuthorSchema } from '@/lib/author-info'
+import AuthorBox from '../../components/author/AuthorBox'
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -77,20 +79,23 @@ export default function Blog({ params }) {
                 ? `${baseUrl}${post.metadata.image}`
                 : `/og?title=${encodeURIComponent(post.metadata.title)}`,
               url: `${baseUrl}/blog/${post.slug}`,
-              author: {
-                '@type': 'Person',
-                name: AGENT_INFO.name,
+              author: generateArticleAuthorSchema(`${baseUrl}/blog/${post.slug}`),
+              publisher: {
+                '@type': 'Organization',
+                name: AGENT_INFO.brokerage,
               },
             }),
           }}
         />
         <article className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl mb-4">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl mb-4">
             {post.metadata.title}
           </h1>
-          <div className="flex items-center justify-between mt-6 mb-8 text-sm text-neutral-600 border-b border-neutral-200 pb-4">
-            <p className="font-medium">{AGENT_INFO.name}</p>
-            <p>{formatDate(post.metadata.publishedAt)}</p>
+          <div className="mb-8">
+            <AuthorBox variant="inline" className="mb-4" />
+            <div className="text-sm text-neutral-500 mb-4">
+              Published on {formatDate(post.metadata.publishedAt)}
+            </div>
           </div>
           {post.metadata.summary && (
             <p className="text-xl text-neutral-600 mb-8 font-medium">
@@ -99,6 +104,11 @@ export default function Blog({ params }) {
           )}
           <CustomMDX source={post.content} />
         </article>
+        
+        {/* Author Box */}
+        <div className="mt-12">
+          <AuthorBox variant="full" />
+        </div>
       </div>
     </div>
   )

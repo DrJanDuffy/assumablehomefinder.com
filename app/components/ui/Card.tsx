@@ -15,7 +15,7 @@ export default function Card({
   onClick,
 }: CardProps) {
   const baseStyles =
-    'rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md'
+    'rounded-lg border border-neutral-200 bg-white p-6 shadow-sm transition-shadow [@media(hover:hover)]:hover:shadow-md'
 
   const combinedClassName = `${baseStyles} ${className}`
 
