@@ -89,7 +89,7 @@ export default function Footer() {
                   href="/contact"
                   className="hover:text-[var(--color-primary)] min-h-[48px] inline-flex items-center touch-manipulation"
                 >
-                  Contact Form
+                  Schedule Consultation
                 </Link>
               </li>
             </ul>
@@ -98,8 +98,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t border-neutral-200 pt-8">
           <p className="text-center text-sm text-neutral-600">
-            © {currentYear} {AGENT_INFO.name}. All rights reserved. | License{' '}
-            {AGENT_INFO.license}
+            Assumable Home Finder | Expert Guidance by Dr. Jan Duffy | Licensed Nevada REALTOR® S.0197614. | Berkshire Hathaway HomeServices © {currentYear}
           </p>
         </div>
       </div>
