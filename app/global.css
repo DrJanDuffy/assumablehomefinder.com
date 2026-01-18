@@ -132,23 +132,28 @@ body {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4 text-neutral-900 dark:text-neutral-200;
+  color: var(--color-neutral-900) !important;
 }
 
 .prose h1 {
   @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  color: var(--color-neutral-900) !important;
 }
 
 .prose h2 {
   @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  color: var(--color-neutral-900) !important;
 }
 
 .prose h3 {
   @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  color: var(--color-neutral-900) !important;
 }
 
 .prose h4 {
   @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  color: var(--color-neutral-900) !important;
 }
 
 .prose strong {
@@ -157,10 +162,16 @@ body {
 
 .prose ul {
   @apply list-disc pl-6;
+  color: var(--color-neutral-900);
 }
 
 .prose ol {
   @apply list-decimal pl-6;
+  color: var(--color-neutral-900);
+}
+
+.prose li {
+  color: var(--color-neutral-900);
 }
 
 .prose > :first-child {
