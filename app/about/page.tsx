@@ -11,7 +11,7 @@ import { generateAuthorPersonSchema } from '@/lib/author-info'
 export const metadata: Metadata = generatePageMetadata({
   title: 'About Dr. Jan Duffy - Assumable Mortgage Specialist',
   description:
-    'Dr. Jan Duffy is a Nevada-licensed REALTOR specializing in assumable mortgages, luxury homes, and Las Vegas real estate. 30+ years market expertise, License S.0197614.LLC.',
+    'Dr. Jan Duffy is a Nevada-licensed REALTOR specializing in assumable mortgages, luxury homes, and Las Vegas real estate. 30+ years market expertise, Licensed Nevada REALTOR® S.0197614.',
   path: '/about',
   keywords: ['Dr. Jan Duffy', 'Las Vegas real estate agent', 'assumable mortgage specialist'],
 })

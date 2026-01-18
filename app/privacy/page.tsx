@@ -259,7 +259,7 @@ export default function PrivacyPage() {
             </p>
             <p className="mb-4">
               <strong>Agent:</strong> Dr. Jan Duffy<br />
-              <strong>License:</strong> S.0197614.LLC<br />
+              <strong>License:</strong> S.0197614<br />
               <strong>Brokerage:</strong> Berkshire Hathaway HomeServices Nevada Properties
             </p>
           </section>

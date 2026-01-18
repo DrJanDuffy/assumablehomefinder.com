@@ -38,7 +38,7 @@ export default function ContactPage() {
             Our team specializes in FHA, VA, and USDA assumable mortgages throughout Las Vegas, Henderson, North Las Vegas, and the greater Nevada area. We understand the nuances of the assumption process, from finding qualified assumable homes to navigating lender requirements and closing the deal.
           </p>
           <p className="text-neutral-600">
-            Ready to explore assumable mortgage opportunities? Contact us today through the form below, phone, or email. We typically respond to inquiries within 24 hours during business hours.
+            Ready to explore assumable mortgage opportunities? Schedule a consultation using the calendar below, or contact us directly by phone or email. We typically respond to inquiries within 24 hours during business hours.
           </p>
         </section>
 
